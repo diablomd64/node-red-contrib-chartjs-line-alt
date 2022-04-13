@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Node-RED Chart.js node",
   "repository": "git@github.com:diablomd64/node-red-contrib-chartjs-line-alt.git",
+  "main": "chartjs-line-alt/chartjs-line-alt.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
