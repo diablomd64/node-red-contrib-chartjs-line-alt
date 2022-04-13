@@ -1,0 +1,115 @@
+<!-- Chart.js: Line Chart-->
+<script type="text/x-red" data-template-name="chartjs-line-alt">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa"></i>Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-path"><i class="fa"></i>Path</label>
+    <input type="text" id="node-input-path" placeholder="Chart path">
+  </div>
+  <div class="form-row">
+    <label for="node-input-charttitle"><i class="fa"></i>Title</label>
+    <input type="text" id="node-input-charttitle" placeholder="Chart title">
+  </div>
+  <div class="form-row">
+    <label for="node-input-xaxis"><i class="fa"></i>X Axis</label>
+    <input type="text" id="node-input-xaxis" placeholder="Chart X Axis name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-yaxis"><i class="fa"></i>Y Axis</label>
+    <input type="text" id="node-input-yaxis" placeholder="Chart Y Axis name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-yminimum"><i class="fa"></i>Y Min</label>
+    <input type="number" id="node-input-yminimum" placeholder="Chart Y Axis minimum">
+  </div>
+  <div class="form-row">
+    <label for="node-input-ymaximum"><i class="fa"></i>Y Max</label>
+    <input type="number" id="node-input-ymaximum" placeholder="Chart Y Axis maximum">
+  </div>
+  <div class="form-row">
+    <label for="node-input-aniduration"><i class="fa"></i>Animation duration</label>
+    <input type="number" id="node-input-aniduration" placeholder="Chart animation duration">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="chartjs-line-alt">
+  <p>Line Chart.</p>
+  <p>Inputs</h3>
+  <dl class="message-properties">
+    <dt>Path<span class="property-type">string</span></dt>
+    <dd>This property sets the chart path.</dd>
+  </dl>
+  <dl class="message-properties">
+    <dt>Title<span class="property-type">string</span></dt>
+    <dd>This property sets the chart title.</dd>
+  </dl>
+  <dl class="message-properties">
+    <dt>X Axis<span class="property-type">string</span></dt>
+    <dd>This property sets the X chart name.</dd>
+  </dl>
+  <dl class="message-properties">
+    <dt>Y Axis<span class="property-type">string</span></dt>
+    <dd>This property sets the Y chart name.</dd>
+  </dl>
+  <dl class="message-properties">
+    <dt>Y Axis Minimum<span class="property-type">int</span></dt>
+    <dd>This property sets the Y chart minimum value.</dd>
+  </dl>
+  <dl class="message-properties">
+    <dt>Y Axis Maximum<span class="property-type">int</span></dt>
+    <dd>This property sets the Y chart maximum value.</dd>
+  </dl>
+  <dl class="message-properties">
+    <dt>Animation Duration<span class="property-type">object</span></dt>
+    <dd>This property sets the chart animation duration.</dd>
+  </dl>
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+     <dt>payload<span class="property-type">object</span></dt>
+     <dd>The payload dataset object.</dd>
+  </dl>
+  <h3>Error</h3>
+  <dl class="message-properties">
+     <dt>error<span class="property-type">string</span></dt>
+     <dd>The error string.</dd>
+  </dl>
+  <h3>Details</h3>
+  <p><code>msg.payload</code> property contains the dataset. The data structure could be:</p>
+  <p><code>{
+    "channel": "TP01",
+    "color": "Red",
+    "dataset": [{"channel": "Graph 1",
+                 "color": "Blue",
+                 "dataset":[{"x": 1, "y": 10}, {"x": 2, "y": 8 }, {"x": 3, "y": 15}]},
+                {"channel": "Graph 2",
+                 "color": "Green",
+                 "dataset":[{"x": 1, "y": 5}, {"x": 2, "y": 7 }, {"x": 3, "y": 19}]}
+               ]
+  }</code>
+  </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("chartjs-line-alt", {
+        category:'Charts',
+        defaults: {
+            name: {value: ''},
+            path: {value: 'charts'},
+            charttitle: {value: 'Chart title'},
+            xaxis: {value: 'Item'},
+            yaxis: {value: 'Value'},
+			yminimum: {value: 0,validate:RED.validators.number()},
+			ymaximum: {value: 500,validate:RED.validators.number()},
+			aniduration: {value: 1}
+        },
+        outputs: 1,
+        inputs: 1,
+        label: function() {
+            return this.name || "Line Chartjs Alt";
+        },
+        color: '#b39ddb',
+        icon: 'line_chart.png'
+    });
+</script>
